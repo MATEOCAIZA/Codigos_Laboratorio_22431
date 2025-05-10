@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h1 class="mb-4"><%= @tarea.persisted? ? "Editar Tarea" : "Nueva Tarea" %></h1>
+
+  <%= form_with(model: tarea, class: "mb-3") do |form| %>
+    <% if tarea.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Errores:</h4>
+        <ul>
+          <% tarea.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :titulo, class: "form-label" %>
+      <%= form.text_field :titulo, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :descripcion, class: "form-label" %>
+      <%= form.text_area :descripcion, class: "form-control" %>
+    </div>
+
+    <div class="form-check mb-3">
+      <%= form.check_box :completada, class: "form-check-input" %>
+      <%= form.label :completada, class: "form-check-label" %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "Guardar", class: "btn btn-primary" %>
+      <%= link_to "Volver", tareas_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

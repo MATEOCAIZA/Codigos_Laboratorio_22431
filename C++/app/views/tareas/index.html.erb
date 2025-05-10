@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Lista de Tareas</h1>
+
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+
+  <div class="row">
+    <% @tareas.each do |tarea| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><%= tarea.titulo %></h5>
+            <p class="card-text"><%= tarea.descripcion %></p>
+            <p class="text-muted">Estado: <%= tarea.completada ? "Completada" : "Pendiente" %></p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <%= link_to "Ver", tarea, class: "btn btn-outline-primary btn-sm" %>
+                <%= link_to "Editar", edit_tarea_path(tarea), class: "btn btn-outline-warning btn-sm" %>
+                <%= link_to "Eliminar", tarea, method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "Nueva Tarea", new_tarea_path, class: "btn btn-success" %>
+</div>

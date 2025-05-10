@@ -1,0 +1,105 @@
+---
+openapi: 3.0.1
+info:
+  title: API Tareas
+  version: v1
+paths:
+  "/tareas":
+    get:
+      summary: Obtiene la lista de tareas
+      tags:
+      - Tareas
+      responses:
+        '200':
+          description: Lista de tareas
+    post:
+      summary: Crea una nueva tarea
+      tags:
+      - Tareas
+      parameters: []
+      responses:
+        '201':
+          description: Tarea creada
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                descripcion:
+                  type: string
+                completada:
+                  type: boolean
+              required:
+              - titulo
+              - descripcion
+  "/tareas/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: ID de la tarea
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Obtiene una tarea por ID
+      tags:
+      - Tareas
+      responses:
+        '200':
+          description: Tarea encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  titulo:
+                    type: string
+                  descripcion:
+                    type: string
+                  completada:
+                    type: boolean
+                required:
+                - id
+                - titulo
+                - descripcion
+        '404':
+          description: Tarea no encontrada
+    patch:
+      summary: Actualiza una tarea
+      tags:
+      - Tareas
+      parameters: []
+      responses:
+        '200':
+          description: Tarea actualizada
+        '404':
+          description: Tarea no encontrada
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                descripcion:
+                  type: string
+                completada:
+                  type: boolean
+              required:
+              - titulo
+              - descripcion
+    delete:
+      summary: Elimina una tarea
+      tags:
+      - Tareas
+      responses:
+        '204':
+          description: Tarea eliminada
+        '404':
+          description: Tarea no encontrada

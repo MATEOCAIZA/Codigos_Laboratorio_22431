@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <h1 class="mb-4"><%= @tarea.titulo %></h1>
+
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text"><%= @tarea.descripcion %></p>
+      <p class="card-text"><strong>Estado:</strong> <%= @tarea.completada ? "Completada" : "Pendiente" %></p>
+
+      <div class="mt-3">
+        <%= link_to "Editar", edit_tarea_path(@tarea), class: "btn btn-primary" %>
+        <%= button_to "Eliminar", @tarea, method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger" %>
+        <%= link_to "Volver a Tareas", tareas_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

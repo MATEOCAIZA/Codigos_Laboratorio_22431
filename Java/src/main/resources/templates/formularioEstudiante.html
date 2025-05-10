@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Estudiante</title>
+    <link rel="stylesheet" href="/css/neon-styles.css">
+</head>
+<body>
+<style>
+    /* Estilos generales */
+    body {
+        background-color: #0a0a0a;
+        color: #fff;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #1a1a1a;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        width: 80%;
+        max-width: 800px;
+    }
+
+    /* Texto de neón */
+    .neon-text {
+        color: #0ff;
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+        text-align: center;
+    }
+
+    /* Botones de neón */
+    .neon-button {
+        background-color: #0a0a0a;
+        color: #0ff;
+        border: 2px solid #0ff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .neon-button:hover {
+        background-color: #0ff;
+        color: #0a0a0a;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+
+    /* Tabla de neón */
+    .neon-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .neon-table th, .neon-table td {
+        border: 1px solid #0ff;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .neon-table th {
+        background-color: #1a1a1a;
+        color: #0ff;
+        text-shadow: 0 0 5px #0ff;
+    }
+
+    .neon-table tr:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+    }
+
+    /* Formularios */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .neon-label {
+        display: block;
+        margin-bottom: 5px;
+        color: #0ff;
+        text-shadow: 0 0 5px #0ff;
+    }
+
+    .neon-input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #0ff;
+        border-radius: 5px;
+        background-color: #1a1a1a;
+        color: #0ff;
+        font-size: 16px;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .neon-input:focus {
+        outline: none;
+        border-color: #0f0;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+</style>
+<div class="container">
+    <h1 class="neon-text" th:text="${estudiante.id} ? 'Editar Estudiante' : 'Agregar Estudiante'"></h1>
+    <form th:action="@{/estudiantes/guardar}" th:object="${estudiante}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="nombre" class="neon-label">Nombre:</label>
+            <input type="text" th:field="*{nombre}" id="nombre" class="neon-input">
+        </div>
+        <div class="form-group">
+            <label for="apellido" class="neon-label">Apellido:</label>
+            <input type="text" th:field="*{apellido}" id="apellido" class="neon-input">
+        </div>
+        <div class="form-group">
+            <label for="email" class="neon-label">Email:</label>
+            <input type="email" th:field="*{email}" id="email" class="neon-input">
+        </div>
+        <div class="form-group">
+            <label for="fechaNacimiento" class="neon-label">Fecha de Nacimiento:</label>
+            <input type="date" th:field="*{fechaNacimiento}" id="fechaNacimiento" class="neon-input">
+        </div>
+        <button type="submit" class="neon-button">Guardar</button>
+    </form>
+</div>
+</body>
+</html>

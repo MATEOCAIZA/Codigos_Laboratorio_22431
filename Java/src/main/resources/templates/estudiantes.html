@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes</title>
+</head>
+<body>
+<style>
+    body {
+        background: black;
+        color: #0ff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    h1 {
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+
+    a {
+        color: #0ff;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    }
+
+    table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        box-shadow: 0 0 10px #0ff;
+    }
+
+    td, th {
+        border: 1px solid #0ff;
+        padding: 10px;
+        text-shadow: 0 0 5px #0ff;
+    }
+
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+</style>
+<h1>Lista de Estudiantes</h1>
+<a href="/estudiantes/nuevo">Agregar Estudiante</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="estudiante : ${estudiantes}">
+        <td th:text="${estudiante.id}"></td>
+        <td th:text="${estudiante.nombre}"></td>
+        <td th:text="${estudiante.apellido}"></td>
+        <td th:text="${estudiante.email}"></td>
+        <td th:text="${estudiante.fechaNacimiento}"></td>
+        <td>
+            <a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}">Editar</a>
+            <a th:href="@{/estudiantes/eliminar/{id}(id=${estudiante.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

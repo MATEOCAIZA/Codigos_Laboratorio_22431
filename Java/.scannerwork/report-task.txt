@@ -1,0 +1,6 @@
+projectKey=Ejercicio_1_Sucio
+serverUrl=http://localhost:9000
+serverVersion=25.5.0.107428
+dashboardUrl=http://localhost:9000/dashboard?id=Ejercicio_1_Sucio
+ceTaskId=4aa4045f-15f3-4fbb-8bbd-e62ecb39a992
+ceTaskUrl=http://localhost:9000/api/ce/task?id=4aa4045f-15f3-4fbb-8bbd-e62ecb39a992
